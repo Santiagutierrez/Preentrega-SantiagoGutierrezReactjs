@@ -1,17 +1,20 @@
-const Item = ({id, name, img, price, stock}) => {
+const Item = ({id, insigne, name, img, price, category, stock}) => {
     return (
         <article>
             <header>
+                <picture>
+                    <img src={img} alt={name} className="itemImage"/>
+                </picture>
+                <p>
+                    {insigne}
+                </p>
                 <h2>
                     {name}
                 </h2>
             </header>
-            <picture>
-                <img src={img} alt={name} className="itemImage"/>
-            </picture>
             <section>
                 <p>
-                    {price}
+                    ${price}
                 </p>
                 <p>
                     {stock}
