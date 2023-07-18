@@ -1,4 +1,6 @@
 import './CartWidget.css'
+import ItemCount from './itemCount'
+
 
 const CartWidget = () => {
     return (
@@ -6,7 +8,7 @@ const CartWidget = () => {
             <div className='carrito'>
                 <p>🛒0</p>
             </div>
-            <button className='carrito-agregar'>Sumar al carrito</button>
+            <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log("cantidad agregada", quantity)} />
         </div>
     )
 }
