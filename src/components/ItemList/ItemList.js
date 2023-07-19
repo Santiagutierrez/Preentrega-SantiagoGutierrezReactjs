@@ -2,9 +2,20 @@ import Item from "../Item/Item";
 
 const ItemList = ({products}) => {
     return (
-        <div>
-            {products.map(prod => <Item key={prod.id} {...prod} />)}
-        </div>
+        <div className="cards"> {/* Aplica la clase "cards" aquí */}
+      {products.map((product) => (
+        <Item
+          key={product.id}
+          id={product.id}
+          insigne={product.insigne}
+          name={product.name}
+          img={product.img}
+          price={product.price}
+          category={product.category}
+          stock={product.stock}
+        />
+      ))}
+    </div>
     )
 }
 

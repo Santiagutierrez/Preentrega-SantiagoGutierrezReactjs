@@ -1,10 +1,10 @@
 .navbar {
-    background-color: #333333;
+    background-color: #fff;
     color: #fff;
     padding: 50px;
 }
 
 .navbar-toggle {
     align-items: center;
+    height: 70px;
 }
-

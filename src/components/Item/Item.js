@@ -6,23 +6,23 @@ const Item = ({id, insigne, name, img, price, category, stock}) => {
         <div className="cards">
         <article className="cards">
             <header>
-                <picture>
+                <picture className="itemImage">
                     <img src={img} alt={name} className="itemImage"/>
                 </picture>
-                <p>
+                <p className="item">
                     {insigne}
                 </p>
-                <h2>
+                <h2 className="item">
                     {name}
                 </h2>
-                <section>
+                <section className="item">
                 <p>
                     ${price}
                 </p>
                 <p>
                     {stock}
                 </p>
-                <footer>
+                <footer className="item">
                     <Link to={`/item/${id}`}>ver detalles</Link>
                 </footer>
             </section>
