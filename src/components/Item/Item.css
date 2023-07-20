@@ -1,38 +1,43 @@
 .cards {
     display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     justify-content: center;
     margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .itemImage {
     width: 100%;
     height: auto;
   }
-  
+  .item-insigne{
+    font-size: 10px;
+    text-align: left;
+  }
+  .item-name{
+    font-size: 14px;
+    text-align: left;
+  }
+
   .item {
     background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 45px;
+    
   }
   
   .item h2 {
     font-size: 18px;
-    margin-bottom: 10px;
   }
   
   .item p {
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 15px;
+    text-align: left;
   }
   
-  .item footer {
-    margin-top: 10px;
-  }
   
   .item a {
-    color: #007bff;
+    color: #393939;
+    text-align: left;
   }

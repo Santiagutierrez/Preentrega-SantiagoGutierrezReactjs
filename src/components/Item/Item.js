@@ -9,10 +9,10 @@ const Item = ({id, insigne, name, img, price, category, stock}) => {
                 <picture className="itemImage">
                     <img src={img} alt={name} className="itemImage"/>
                 </picture>
-                <p className="item">
+                <p className="item-insigne">
                     {insigne}
                 </p>
-                <h2 className="item">
+                <h2 className="item-name">
                     {name}
                 </h2>
                 <section className="item">
