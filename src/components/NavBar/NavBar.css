@@ -8,3 +8,11 @@
     align-items: center;
     height: 70px;
 }
+
+.categories {
+    position: absolute;
+    left: 40px;
+    top: 70px;
+    padding: 5px;
+}
+

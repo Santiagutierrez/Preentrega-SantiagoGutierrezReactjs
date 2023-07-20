@@ -157,7 +157,7 @@ const products = [
         insigne: "ROPAREVOLVER",
         name:"PANTALON FALU VERDE",
         price:38000,
-        category:"PANTALONES"
+        productId:"PANTALONES"
     }
 ]
 
