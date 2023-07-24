@@ -1,6 +1,10 @@
 import Item from "../Item/Item";
 
 const ItemList = ({products}) => {
+  if (!products) {
+    return <p>No hay productos disponibles.</p>;
+  }
+  
     return (
         <div className="cards"> {/* Aplica la clase "cards" aquí */}
       {products.map((product) => (

@@ -11,8 +11,8 @@ const NavBar = () => {
                 </img>
             </Link>
             <div className="categories">
-                <NavLink to='/category/Tienda' activeClassName="activeOption" className="Option">Tienda</NavLink>
-                <NavLink to='/category/Contacto' activeClassName="activeOption" className="Option">Contacto</NavLink>
+                <NavLink to='/category/Tienda'  className="Option">Tienda</NavLink>
+                <NavLink to='/category/Contacto'  className="Option">Contacto</NavLink>
             </div>
             <CartWidget />
         </nav>

@@ -16,3 +16,7 @@
     padding: 5px;
 }
 
+.activeOption {
+    font-weight: bold;
+  }
+

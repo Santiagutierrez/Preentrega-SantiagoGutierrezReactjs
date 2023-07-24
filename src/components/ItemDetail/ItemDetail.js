@@ -1,6 +1,14 @@
+import { useState } from "react"
 import ItemCount from "../CartWidget/itemCount"
+import { Link } from "react-router-dom"
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
+    const [quantityAdded, setQuantityAdded] = useState(0)
+
+    const handleOnAdd = (quantity) => {
+        setQuantityAdded (quantity)
+    }
+
     return (
         <article>
             <header>
@@ -23,7 +31,13 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
                 </p>
             </section>
             <footer>
-                <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log('cantidad agregada ')} />
+                {
+                    quantityAdded > 0 ? (
+                        <Link to='/cart' className="Option"> Finalizar compra </Link>
+                    ) :(
+                    <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
+                    )
+                }
             </footer>
         </article>
     )
