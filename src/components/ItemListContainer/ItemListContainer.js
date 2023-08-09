@@ -37,7 +37,7 @@ const ItemListContainer = ({ greeting }) => {
 
             const fetchProducts = categoryId ? getProductsById : getProducts;
 
-            fetchProducts() // Use fetchProducts instead of getProducts
+            fetchProducts() 
                 .then(response => {
                     setProduct(response);
                 })

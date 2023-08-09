@@ -1,7 +1,9 @@
 .navbar {
     background-color: #fff;
     color: #fff;
-    padding: 50px;
+    padding: 30px;
+    position: sticky;
+    top: 0;
 }
 
 .navbar-toggle {
@@ -9,11 +11,61 @@
     height: 70px;
 }
 
-.categories {
+.categories-tienda {    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
     position: absolute;
     left: 40px;
-    top: 70px;
+    top: 50px;
     padding: 5px;
+}
+.categories-contacto {    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    position: absolute;
+    left: 150px;
+    top: 50px;
+    padding: 5px;
+}
+.tienda {
+    padding: 15px;
+    text-decoration: none;
+    color: black;
+}
+.tienda:after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    transition: right, .5s;
+    will-change: width;
+}
+.tienda:hover:after {
+    width: 100%;
+    left: 0;
+}
+.contacto {
+    padding: 15px;
+    text-decoration: none;
+    color: black;
+}
+.contacto:after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    transition: right, .5s;
+    will-change: width;
+}
+.contacto:hover:after {
+    width: 100%;
+    left: 0;
 }
 
 .activeOption {

@@ -23,7 +23,7 @@ const Item = ({id, insigne, name, img, price, category, stock}) => {
                     {stock}
                 </p>
                 <footer className="item">
-                    <Link to={`/item/${id}`}>ver detalles</Link>
+                    <Link to={`/item/${id}`}>Comprar</Link>
                 </footer>
             </section>
             </header>
