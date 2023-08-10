@@ -4,13 +4,13 @@ import reportWebVitals from "../../reportWebVitals";
 import {getProductsById} from "../../Mock/asyncMock"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBMhGoYZowkTVEc8xWFR2uTKnNXWTcI2CE",
-    authDomain: "ecommerce-coderhouse-38ef3.firebaseapp.com",
-    projectId: "ecommerce-coderhouse-38ef3",
-    storageBucket: "ecommerce-coderhouse-38ef3.appspot.com",
-    messagingSenderId: "14424326443",
-    appId: "1:14424326443:web:30d35582ad90242509c56e",
-    measurementId: "G-3BBTJZ3KMH"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_proyectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
+    measurementId: process.env.REACT_APP_messagingSenderId
   };
 
 
