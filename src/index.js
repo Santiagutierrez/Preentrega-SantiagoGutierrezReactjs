@@ -6,16 +6,16 @@ import reportWebVitals from './reportWebVitals';
 //import firebaseConfig from './service/firebase/firebaseConfig'
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import {getProductsById} from "./Mock/asyncMock"
+import {getProducts, getProductsById} from "./Mock/asyncMock"
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_apiKey,
-    authDomain: process.env.REACT_APP_authDomain,
-    projectId: process.env.REACT_APP_proyectId,
-    storageBucket: process.env.REACT_APP_storageBucket,
-    messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    appId: process.env.REACT_APP_appId,
-    measurementId: process.env.REACT_APP_messagingSenderId
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROYECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE,
+    messagingSenderId: process.env.REACT_APP_MESSAGE_SENDER,
+    appId: process.env.REACT_APP_APPID,
+    measurementId: process.env.REACT_APP_MEASUREID
   };
 
   const app = initializeApp(firebaseConfig)
@@ -23,17 +23,29 @@ const firebaseConfig = {
 
   const productIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
+  // productIds.forEach((productId) => {
+  //   getProductsById(productId)
+  //     .then((product) => {
+  //       db.collection("products").add(product)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching product by ID:', error);
+  //     });
+  // });
+
   productIds.forEach((productId) => {
     getProductsById(productId)
       .then((product) => {
-        db.collection("products").add(product)
+        return addDoc(collection(db, 'products'), product);  // Aquí pasamos 'product' en lugar de 'getProducts'
+      })
+      .then((docRef) => {
+        console.log("Documento agregado con ID: ", docRef.id);
       })
       .catch((error) => {
-        console.error('Error fetching product by ID:', error);
+        console.error("Error al agregar el documento: ", error);
       });
   });
-
-
+  
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
