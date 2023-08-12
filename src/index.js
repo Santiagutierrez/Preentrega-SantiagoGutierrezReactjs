@@ -3,42 +3,36 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import firebaseConfig from './service/firebase/firebaseConfig'
+//import firebaseConfig from './service/firebase/firebaseConfig'
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import {getProductsById} from "./Mock/asyncMock"
 
+const firebaseConfig = {
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_proyectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
+    measurementId: process.env.REACT_APP_messagingSenderId
+  };
 
-// Import the functions you need from the SDKs you need
-//import { initializeApp } from "firebase/app";
-//import { getAnalytics } from "firebase/analytics";
+  const app = initializeApp(firebaseConfig)
+  export const db = getFirestore(app)
 
-//importar para exportar mi json de data
-//import { getFirestore, collection, addDoc } from "firebase/firestore"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+  //const productIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  //productIds.forEach((productId) => {
+    //getProductsById(productId)
+      //.then((product) => {
+        // Aquí puedes agregar el producto a la base de datos
+      //})
+      //.catch((error) => {
+        //console.error('Error fetching product by ID:', error);
+      //});
+  //});
 
-
-// Initialize Firebase
-
-// Initialize Firebase
-//const app = initializeApp(firebaseConfig);
-//const db = getFirestore(app);
-
-//iterar sobre los datos del mock para que me suba cada objeto a firestore
-
-//products.forEach((product) => {
-  //addDoc funcion que llamo desde firestore, collection funcion desde firestore
-  //db variable que llama a getFirestore, "products" es el nombre de nuestra colección
-
-  //addDoc(collection(db, 'products'), product)
-    //.then((docRef) => {
-      //console.log("documento agregado con id ", docRef.id)
-    //})
-    //.catch((error) => {
-      //console.error("error al agregar el documento", error)
-    //})
-//})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

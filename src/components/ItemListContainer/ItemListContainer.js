@@ -3,7 +3,7 @@ import { getProducts, getProductsById } from "../../Mock/asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import { query, getDocs, where, collection } from "firebase/firestore"
-import { db } from "../../service/firebase/firebaseConfig"
+import { db } from "../../index"
 
 
 
