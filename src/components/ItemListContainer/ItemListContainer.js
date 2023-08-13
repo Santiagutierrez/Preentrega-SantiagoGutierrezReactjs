@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getProducts, getProductsById } from "../../Mock/asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
-import { query, getDocs, where, collection } from "firebase/firestore"
+import { query, getDocs, where, collection, doc } from "firebase/firestore"
 import { db } from "../../index"
 
 
@@ -14,26 +14,37 @@ const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams();
 
     useEffect(() => {
-        setLoading(true)
+        setLoading(true);
 
         const collectionRef = categoryId
-            ? query(collection(db, 'products'), where('category', '==', categoryId))
-            : collection (db, 'products')
 
-        getDocs(collectionRef)
-            .then(response =>{
-                const productsAdapted = response.docs.map(doc =>{
-                    const data = doc.data()
-                    return {id: doc.id, ...data}
-                })
-                setProduct(productsAdapted)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+        ? query(collection(db, 'products'), where('category', '==', categoryId))
+
+        : collection(db, 'products');
+
+        console.log(collectionRef);
+
+        const fetchData = async () => {
+
+        try {
+
+        const products = await getDocs(collectionRef);
+
+        const productsAdapted = products.docs.map((doc, index) => {
+
+        const data = doc.data();
+
+        return { id: doc.id, ...data };
+
+        });
+
+        setProduct(productsAdapted);
+
+        } catch (err) {}
+
+        };
+
+        fetchData();
 
             const fetchProducts = categoryId ? getProductsById : getProducts;
 

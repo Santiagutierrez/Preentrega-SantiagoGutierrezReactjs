@@ -11,13 +11,13 @@ import {getProducts, getProductsById} from "./Mock/asyncMock"
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_PROYECT_ID,
+    projectId: process.env.REACT_APP_PROJECT_ID,
     storageBucket: process.env.REACT_APP_STORAGE,
     messagingSenderId: process.env.REACT_APP_MESSAGE_SENDER,
     appId: process.env.REACT_APP_APPID,
     measurementId: process.env.REACT_APP_MEASUREID
   };
-
+  console.log(firebaseConfig);
   const app = initializeApp(firebaseConfig)
   export const db = getFirestore(app)
 
@@ -33,18 +33,18 @@ const firebaseConfig = {
   //     });
   // });
 
-  productIds.forEach((productId) => {
-    getProductsById(productId)
-      .then((product) => {
-        return addDoc(collection(db, 'products'), product);  // Aquí pasamos 'product' en lugar de 'getProducts'
-      })
-      .then((docRef) => {
-        console.log("Documento agregado con ID: ", docRef.id);
-      })
-      .catch((error) => {
-        console.error("Error al agregar el documento: ", error);
-      });
-  });
+  // productIds.forEach((productId) => {
+  //   getProductsById(productId)
+  //     .then((product) => {
+  //       return addDoc(collection(db, 'products'), product);  // Aquí pasamos 'product' en lugar de 'getProducts'
+  //     })
+  //     .then((docRef) => {
+  //       console.log("Documento agregado con ID: ", docRef.id);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error al agregar el documento: ", error);
+  //     });
+  // });
   
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
