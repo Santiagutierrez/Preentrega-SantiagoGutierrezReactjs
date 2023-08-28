@@ -1,13 +1,13 @@
 .decrement {
     position: absolute;
-    left: 296px;
+    left: 550px;
     color: #fff;
     background-color: #393939;
 }
 .increment {
     position: absolute;
-    right: 294px;
-    top: 282px;
+    right: 550px;
+    top: 809px;
     color: #fff;
     background-color: #393939;
 }

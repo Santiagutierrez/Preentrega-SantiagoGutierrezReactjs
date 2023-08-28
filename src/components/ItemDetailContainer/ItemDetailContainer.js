@@ -14,20 +14,14 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         setLoading(true);
         const fetchData = async () => {
-          const querySnapshot = await getDocs(collection(db, "products"));
-          const newData = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
-          setProduct(newData);
+          const ref = doc(db, "products", itemId)
+          const document = await getDoc(ref);
+          const item = {... document.data(), id: document.id};
+          setProduct(item);
           setLoading(false);
         };
         fetchData();
       }, [itemId]);
-    
-      const itemSelected = !loading
-        ? product.filter((item) => parseInt(item.id) === parseInt(itemId))
-        : "";
 
     // useEffect(() => {
     //     setLoading(true);
@@ -44,11 +38,9 @@ const ItemDetailContainer = () => {
     //         });
     // }, [itemId]);
     
-    return (
-        <div>
-            <ItemDetail itemSelected={itemSelected} />
-        </div>
-    )
+    return loading ? 
+      (<div>LOADING...</div>)  
+    : ( <div><ItemDetail {...product} /></div>)
 }
 
 export default ItemDetailContainer

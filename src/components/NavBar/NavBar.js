@@ -11,7 +11,7 @@ const NavBar = () => {
                 </img>
             </Link>
             <div className="categories-tienda">
-                <NavLink to='/category/Tienda'  className="tienda">Tienda</NavLink>
+                <NavLink to='/'  className="tienda">Tienda</NavLink>
             </div>
             <div className="categories-contacto">
                 <NavLink to='/category/Contacto'  className="contacto">Contacto</NavLink>

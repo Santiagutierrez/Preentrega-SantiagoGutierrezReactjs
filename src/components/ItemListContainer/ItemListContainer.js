@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { getProducts, getProductsById } from "../../Mock/asyncMock"
+//import { getProducts, getProductsById } from "../../Mock/asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
-import { query, getDocs, where, collection, doc } from "firebase/firestore"
+import { query, addDoc, getDocs, where, collection, doc } from "firebase/firestore"
 import { db } from "../../index"
 
 
@@ -13,49 +13,49 @@ const ItemListContainer = ({ greeting }) => {
 
     const { categoryId } = useParams();
 
+
+//CODIGO para agregar un item a la base de datos
+// useEffect(() => {
+  
+//     addDoc(collection(db, 'products'), {id:"1234",name:"sarasa"})
+//         .then((docRef) => {
+//             console.log("Document written with ID: ", docRef.id);
+//         })
+//         .catch((error) => {
+//             console.error("Error adding document: ", error);
+//         });   
+// }, [])
+
+
     useEffect(() => {
         setLoading(true);
 
-        const collectionRef = categoryId
+        //ternary operator
+        const collectionRef = categoryId ? 
+            query(collection(db, 'products'), where('category', '==', categoryId)) 
+            : collection(db, 'products');
 
-        ? query(collection(db, 'products'), where('category', '==', categoryId))
+        console.log("Fetching Data from DB! with category id: " + categoryId);
 
-        : collection(db, 'products');
+        getDocs(collectionRef).then(result => {
+       
 
-        console.log(collectionRef);
+            const productsAdapted = result.docs.map((doc) => ({...doc.data(), id: doc.id}));
+            setProduct(productsAdapted);           
+            console.log(productsAdapted);
+            setLoading(false)
+        }).catch(err => console.err("explotó el fetch: " + err));
 
-        const fetchData = async () => {
+        // const fetchProducts = categoryId ? getProductsById : getProducts;
 
-        try {
-
-        const products = await getDocs(collectionRef);
-
-        const productsAdapted = products.docs.map((doc, index) => {
-
-        const data = doc.data();
-
-        return { id: doc.id, ...data };
-
-        });
-
-        setProduct(productsAdapted);
-
-        } catch (err) {}
-
-        };
-
-        fetchData();
-
-            const fetchProducts = categoryId ? getProductsById : getProducts;
-
-            fetchProducts() 
-                .then(response => {
-                    setProduct(response);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }, [categoryId]);
+        // fetchProducts() 
+        //     .then(response => {
+        //         setProduct(response);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
+    }, [categoryId]);
 
     return (
         <div>
