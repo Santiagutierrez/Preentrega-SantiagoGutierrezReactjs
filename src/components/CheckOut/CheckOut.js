@@ -9,7 +9,10 @@ const CheckOut = () => {
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState('')
 
-    const [cart, total, clearCart] = useContext(CartContext)
+    const {cart, clearCart} = useContext(CartContext);
+    let total = 0;
+
+    cart.forEach(item => total += item.price * item.quantity)
 
     const createOrder = async ({ name, phone, email }) => {
         setLoading(true)
@@ -32,21 +35,19 @@ const CheckOut = () => {
             console.log(ids);
             const productsRef = collection(db, 'products')
 
-            const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
+            const queryResultForIds = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
 
-            const {docs} = productsAddedFromFirestore
+            const docs = queryResultForIds.docs
 
-            docs.forEach(doc => {
-                const dataDoc = doc.data()
-                const stockDb =dataDoc.stock
+            cart.forEach(item => {               
 
-                const productAddedToCart = cart.find(prod => prod.id === doc.id)
-                const prodQuantity = productAddedToCart?.quantity
+                const dbProduct = docs.find(doc => doc.id === item.id)
+                const stockDb = dbProduct.data().stock
 
-                if(stockDb >= prodQuantity) {
-                    batch.update(doc.ref, {stock: stockDb - prodQuantity })
+                if(stockDb >= item.quantity) {
+                    batch.update(dbProduct.ref, {stock: stockDb - item.quantity })
                 } else {
-                    outOfStock.push({ id: doc.id, ...dataDoc})
+                    outOfStock.push(item)
                 }
             })
 
@@ -60,7 +61,10 @@ const CheckOut = () => {
                 setOrderId(orderAdded.id)
                 clearCart()
             } else {
-                console.error('hay productos que estan fuera de stock')
+                let outOfStockNames = outOfStock.map(item => item.name)
+                let nameStr = ''
+                outOfStockNames.forEach(name => nameStr += ", " + name)
+                alert('hay productos que estan fuera de stock: ' + nameStr)
             }
         } catch (error) {
             console.log(error)
@@ -80,6 +84,7 @@ const CheckOut = () => {
     return (
         <div>
             <h1>Checkout</h1>
+            <h2>${total}</h2>
             <CheckOutForm onConfirm={createOrder} />
         </div>
     )

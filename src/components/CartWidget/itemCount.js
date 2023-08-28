@@ -24,11 +24,11 @@ const ItemCount = ({stock, initial, saveToCart}) => {
                 <h4>{quantity}</h4>
                 <button onClick={increment} className="increment">+</button>
             </div>
-            {/*<div>
+            <div>
                 <button onClick={() => saveToCart(quantity)} disabled={quantity === 0 || quantity > stock} className="addToCart">
                     agregar al carrito
                 </button>
-    </div>*/}
+            </div>
         </div>
     )
 }

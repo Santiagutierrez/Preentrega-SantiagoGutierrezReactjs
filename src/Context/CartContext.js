@@ -8,15 +8,16 @@ export const CartContext = createContext({
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
 
-    //console.log(cart);
+    console.log("Cart");
+    console.log(cart);
 
     const addItem = (item, quantity) => {
-        if(!isInCart(item.id)) {
-            setCart(previousCart=> [...previousCart, {...item, quantity}]);
+        if (!isInCart(item.id)) {
+            setCart(previousCart => [...previousCart, { ...item, quantity }]);
         } else {
             setCart(previousCart => previousCart.map(elem => {
                 if (elem.id === item.id) {
-                    return {...elem, "quantity": elem.quantity + quantity}
+                    return { ...elem, "quantity": elem.quantity + quantity }
                 }
                 return elem
             }));

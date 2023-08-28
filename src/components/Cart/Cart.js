@@ -4,9 +4,11 @@ import { Link } from "react-router-dom"
 import CartItem from "../CartItem/CartItem"
 
 const Cart = () => {
-    const { cart, clearCart, totalQuantity, total} = useContext(CartContext)
-
-    if(totalQuantity === 0) {
+    const { cart, clearCart} = useContext(CartContext)
+    let total = 0
+    cart.forEach(i => total += i.price * i.quantity)
+    
+    if(cart.length === 0) {
         return (
             <div>
                 <h1>No hay items en el carrito</h1>

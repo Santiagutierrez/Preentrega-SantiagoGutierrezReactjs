@@ -7,8 +7,7 @@ import './ItemDetail.css'
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
     const [quantityAdded, setQuantityAdded] = useState(1)
     const { addItem } = useContext (CartContext)
-    console.log("Received item: " + name);
-    
+
     const handleOnAdd = (quantity) => {
         setQuantityAdded (quantity)
         const item = {
@@ -30,7 +29,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
             </header>
             <section>
                 <p>
-                    Categoria: {category}
+                    Categoria:<Link to={`/category/${category}`} className="Link"> {category}</Link>
                 </p>
                 <p>
                     Descripcion: {description}
