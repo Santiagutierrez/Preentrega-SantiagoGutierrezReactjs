@@ -20,7 +20,7 @@ const Item = ({id, insigne, name, img, price, category, stock}) => {
                     ${price}
                 </p>
                 <p>
-                    {stock}
+                    x{stock}
                 </p>
                 <footer className="item">
                     <Link to={`/item/${id}`}>Comprar</Link>
