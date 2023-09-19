@@ -44,7 +44,7 @@ const ItemListContainer = ({ greeting }) => {
             setProduct(productsAdapted);           
             console.log(productsAdapted);
             setLoading(false)
-        }).catch(err => console.err("explotó el fetch: " + err));
+        }).catch(err => console.error("explotó el fetch: " + err));
 
         // const fetchProducts = categoryId ? getProductsById : getProducts;
 

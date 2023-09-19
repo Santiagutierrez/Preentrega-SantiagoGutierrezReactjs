@@ -30,13 +30,13 @@
 .tienda {
     padding: 15px;
     text-decoration: none;
-    color: black;
+    color: #393939;
 }
 .tienda:after{
     content: "";
     width: 0;
     height: 2px;
-    background-color: black;
+    background-color:  #393939;
     position: absolute;
     bottom: 0;
     left: 0%;
@@ -47,16 +47,121 @@
     width: 100%;
     left: 0;
 }
+.menu-dropdown {
+    flex-direction: column;
+    display: flex;
+    background-color: #fff;
+    color: #393939;
+    transition: opacity 5s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 10px;
+    z-index: 1; 
+}
+.menu-dropdown.open {
+    height: auto; 
+    opacity: 1;
+  }
+.menu-dropdown a {
+    color: #393939; 
+    text-decoration: none; 
+  }
+.category-remeras {
+    text-decoration: none;
+    text-align: left;
+    color: #333;
+    margin-bottom: 5px;
+  }
+.category-remeras:after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #393939;
+    position: absolute;
+    bottom: 94px;
+    left: 0%;
+    transition: right, .5s;
+    will-change: width;
+}
+.category-remeras:hover:after {
+    width: 100%;
+    left: 0;
+}
+.category-pantalones {
+    text-decoration: none;
+    text-align: left;
+    color: #333;
+    margin-bottom: 5px;
+  }
+.category-pantalones:after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #393939;
+    position: absolute;
+    bottom: 66px;
+    left: 0%;
+    transition: right, .5s;
+    will-change: width;
+}
+.category-pantalones:hover:after {
+    width: 100%;
+    left: 0;
+}
+.category-buzos {
+    text-decoration: none;
+    text-align: left;
+    color: #333;
+    margin-bottom: 5px;
+  }
+.category-buzos:after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #393939;
+    position: absolute;
+    bottom: 40px;
+    left: 0%;
+    transition: right, .5s;
+    will-change: width;
+}
+.category-buzos:hover:after {
+    width: 100%;
+    left: 0;
+}
+.category-abrigos {
+    text-decoration: none;
+    text-align: left;
+    color: #333;
+    margin-bottom: 5px;
+  }
+.category-abrigos:after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #393939;
+    position: absolute;
+    bottom: 10px;
+    left: 0%;
+    transition: right, .5s;
+    will-change: width;
+}
+.category-abrigos:hover:after {
+    width: 100%;
+    left: 0;
+}
 .contacto {
     padding: 15px;
     text-decoration: none;
-    color: black;
+    color:  #393939;
 }
 .contacto:after{
     content: "";
     width: 0;
     height: 2px;
-    background-color: black;
+    background-color: #393939;
     position: absolute;
     bottom: 0;
     left: 0%;
@@ -67,7 +172,6 @@
     width: 100%;
     left: 0;
 }
-
 .activeOption {
     font-weight: bold;
   }
